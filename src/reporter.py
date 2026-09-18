@@ -16,6 +16,10 @@ class DataFrameReporter:
 
             print('Доля дубликатов:', format(duplicates / df.shape[0], self.percent_format))
 
+            print(df.describe(include='all' if self.include_all else None))
+            print('Количество пропусков:', df.isna().sum().sum())            
+            print('Доля пропусков:', format(df.isna().mean(axis=None), self.float_format))
+    
 import pandas as pd
 
 data = pd.read_csv("D:/YandexDisk/ML_Inginier/Lessons/Sprint_6/Project_split_6/mle-razrabotka-v-ide/data/payments.csv")
